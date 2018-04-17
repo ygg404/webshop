@@ -1,0 +1,36 @@
+﻿
+<html>
+     <TITLE>登录</TITLE>     
+<META charset="utf-8">	    
+<body>
+	<div>
+		<img src="/image/2000.png"/>
+	</div>
+    <div>
+        <p>用户名: <input type="text" id="username" /></p>
+    </div>
+    <div>
+        <p>密码: <input type="password" id="pwd" /></p>
+    </div>
+    <input type="button" value="提交" onclick="SubmitForm();"/>
+
+    <script src="/static/jquery/jquery-2.0.3.min.js"></script>
+    <script>
+        function SubmitForm(){
+            $.ajax({
+                url:'/learn/ajax_demo/',
+                type:'POST',
+                data:{'user':$('#username').val(),'pwd':$('#pwd').val()},
+                success:function(data){
+                    if($.parseJSON(data)['status']==true){
+                        location.href="http://www.baidu.com";
+                    }
+                    else{
+                        alert("用户名或密码错误")
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

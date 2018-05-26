@@ -1,27 +1,24 @@
-﻿
+
 <html>
-     <TITLE>登录</TITLE>     
+     <TITLE>添加人</TITLE>     
 <META charset="utf-8">	    
 <body>
-	<div>
-		<img src="/static/image/2000.png"/>
-	</div>
+
     <div>
-        <p>用户名: <input type="text" id="username" /></p>
+        <p>name: <input type="text" id="name" /></p>
     </div>
     <div>
-        <p>密码: <input type="password" id="pwd" /></p>
+        <p>age: <input type="text" id="age" /></p>
     </div>
     <input type="button" value="提交" onclick="SubmitForm();"/>
-	<input type="button" value="test" onclick="testjs();"/>
     <script src="/static/jquery/jquery-2.0.3.min.js"></script>
     <script>
         function SubmitForm(){
 			
             $.ajax({
-                url:'/learn/ajax_demo/',
+                url:'/people/ajax_demo/',
                 type:'POST',
-                data:{'user':$('#username').val(),'pwd':$('#pwd').val()},
+                data:{'name':$('#name').val(),'pwd':$('#pwd').val()},
                 success:function(data){
                     if($.parseJSON(data)['status']==true){
                         location.href="http://www.baidu.com";
@@ -33,11 +30,6 @@
             })
         }
 		
-		function testjs()
-		{
-				$('#username').val("111");
-				$('#pwd').val('222');
-		}
     </script>
 </body>
 </html>
